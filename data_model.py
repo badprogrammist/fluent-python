@@ -1,17 +1,17 @@
 import collections
-from random import choice
 from math import hypot
+from random import choice
 
 Card = collections.namedtuple('Card', ['rank', 'suit'])
+
 
 class FrenchDeck:
     ranks = [str(n) for n in range(2, 11)] + list('JQKA')
     suits = dict(spades=3, hearts=2, diamonds=1, clubs=0)
 
-
     def __init__(self):
         self._cards = [Card(rank, suit) for suit in self.suits.keys()
-                                        for rank in self.ranks]
+                       for rank in self.ranks]
 
     def __len__(self):
         return len(self._cards)
@@ -24,8 +24,8 @@ class FrenchDeck:
         rank_value = FrenchDeck.ranks.index(card.rank)
         return rank_value * len(FrenchDeck.suits) + FrenchDeck.suits[card.suit]
 
-class Vector:
 
+class Vector:
     def __init__(self, x=0, y=0):
         self.x = x
         self.y = y
@@ -72,6 +72,7 @@ def check_deck():
     assert sorted_deck[51].rank == 'A'
     assert sorted_deck[51].suit == 'spades'
 
+
 def check_vector():
     v1 = Vector(3, 4)
     v2 = Vector(5, 6)
@@ -82,6 +83,7 @@ def check_vector():
 
     v4 = v1 * 2
     assert v4.x == 6 and v4.y == 8
+
 
 if __name__ == '__main__':
     check_deck()
